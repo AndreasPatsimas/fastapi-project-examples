@@ -1,0 +1,8 @@
+installation tesseract ubuntu-terminal:
+
+1) sudo apt update
+2) sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel
+3) sudo apt install -y tesseract-ocr
+4) sudo apt update
+5) tesseract --version
+6) pip install pytesseract --> in your project venv
