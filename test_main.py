@@ -2,10 +2,24 @@ from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
+USER_ID = 1
+USER_EMAIL = "andreas-patsim@hotmail.com"
 
 
 def test_all_users():
     response = client.get("/users")
+    print(response.content)
+    assert response.status_code == 200
+
+
+def test_all_user_by_id():
+    response = client.get(f"/users/{USER_ID}")
+    print(response.content)
+    assert response.status_code == 200
+
+
+def test_all_user_by_email():
+    response = client.get(f"/users/email/?mail={USER_EMAIL}")
     print(response.content)
     assert response.status_code == 200
 
@@ -31,11 +45,11 @@ def test_create_todo():
 
     response = client.post("/todos/",
                            json={
-                                  "title": "ComeBack",
-                                  "description": "vlue for money",
-                                  "priority": 1,
-                                  "complete": False
-                                },
+                               "title": "ComeBack",
+                               "description": "vlue for money",
+                               "priority": 1,
+                               "complete": False
+                           },
                            headers={"Authorization": f"Bearer {token}"})
     print(response.content)
     assert response.status_code == 200
