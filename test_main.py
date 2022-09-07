@@ -45,10 +45,14 @@ def test_create_todo():
 
     response = client.post("/todos/",
                            json={
-                               "title": "ComeBack",
-                               "description": "vlue for money",
-                               "priority": 1,
-                               "complete": False
+                               "todo": {
+                                   "title": "ComeBack",
+                                   "description": "value for money",
+                                   "priority": 1,
+                                   "complete": False
+                               },
+                               "title": "tot",
+                               "completed": False
                            },
                            headers={"Authorization": f"Bearer {token}"})
     print(response.content)

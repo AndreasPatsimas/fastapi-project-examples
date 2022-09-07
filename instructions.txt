@@ -1,0 +1,47 @@
+########## Commands ################
+
+create venv: python3 -m venv fastapi-env
+activate venv: . venv/bin/activate
+server -up: uvicorn main:app --reload, main==name of python file i want run
+
+########################################
+
+
+########## Dependencies ################
+
+if dependencies are in a txt file then:
+pip install -r requirements.txt
+
+########################################
+
+
+########## Endpoints ################
+
+http://127.0.0.1:8000/docs --> docs after my initial endpoint and then swagger comes
+
+########################################
+
+
+########## SQLAlchemy ################
+
+pip install sqlalchemy
+
+########################################
+
+
+########## Alembic ################
+
+1) pip install alembic
+2) alembic init <folder name>  --> initializes a new, generic environment, e.g.: alembic init alembic
+3) go to alembic.ini and pass in sqlalchemy.url= the db url with driver etc
+4) go to env.py inside init directory e.g:alembic, a) import models
+                                                   b) comment out # if config.config_file_name is not None:
+                                                                 #  fileConfig(config.config_file_name)
+                                                   c) write down from config = context.config: fileConfig(config.config_file_name)
+                                                                                               target_metadata = models.Base.metadata
+                                                   d) comment out target_metadata = None
+5) alembic revision -m <message> --> creates a new revision of the environment, e.g.: alembic revision -m "create address table"
+6) alembic upgrade <revision #>, e.g: alembic upgrade 655271d83a41
+7) alembic downgrade <revision #>, e.g: alembic downgrade -1 for first revision or alembic downgrade 655271d83a41 for others
+
+########################################

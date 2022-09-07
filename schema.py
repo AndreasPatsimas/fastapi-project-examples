@@ -34,6 +34,10 @@ class Todo(BaseModel):
     complete: bool
 
 
+class Dummy(BaseModel):
+    todo: Todo
+    title: str
+    completed: bool
 
 class Address(BaseModel):
     address1: str
