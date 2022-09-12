@@ -48,7 +48,7 @@ async def zip_file(zip_file_name: str, files: List[UploadFile] = File(...)):
             shutil.copyfileobj(file.file, buffer)
         file_list.append(file_name)
 
-    zipped_file = zipfiles(file_list, zip_file_name)
+    zipped_file = zip_files(file_list, zip_file_name)
     for file_name in file_list:
         os.remove(file_name)
 
@@ -61,7 +61,7 @@ async def download_file(name: str):
     return path
 
 
-def zipfiles(file_list, zip_file_name: str):
+def zip_files(file_list, zip_file_name: str):
     io = BytesIO()
     zip_sub_dir = zip_file_name
     zip_filename = "%s.zip" % zip_sub_dir
