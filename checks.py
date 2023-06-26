@@ -67,3 +67,11 @@ def build_connect_packet(client_id):
 # print(input_data)
 
 # Assuming you have the necessary imports and class definitions
+
+x = ''
+
+if x:
+    print("tteers")
+else:
+    print("volun")
+
