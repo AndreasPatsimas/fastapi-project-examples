@@ -18,5 +18,3 @@ job2 = cron.new(command=command_two)
 job2.minute.every(3)
 
 cron.write()
-
-os.system(command_two)
